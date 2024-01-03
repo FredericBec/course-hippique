@@ -11,9 +11,9 @@ public class HorseRun {
 	public static void main(String[] args) {
 		
 		
-		tierce();
-		
-
+		//tierce();
+		//quarte();
+		quinte();
 	}
 	
 	public static int getHorses() {
@@ -29,6 +29,24 @@ public class HorseRun {
 		
 		for(int i = 0; i < winnerTierce.length; i++) {
 			System.out.print(winnerTierce[i] + " - ");
+		}
+	}
+	
+	public static void quarte() {
+		
+		int[] winnerQuarte = new Random().ints(1, getHorses()).distinct().limit(4).toArray();
+		
+		for(int i = 0; i < winnerQuarte.length; i++) {
+			System.out.print(winnerQuarte[i] + " - ");
+		}
+	}
+	
+	public static void quinte() {
+		
+		int[] winnerQuinte = new Random().ints(1, getHorses()).distinct().limit(5).toArray();
+		
+		for(int i = 0; i < winnerQuinte.length; i++) {
+			System.out.print(winnerQuinte[i] + " - ");
 		}
 	}
 	
