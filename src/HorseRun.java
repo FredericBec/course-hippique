@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class HorseRun {
@@ -10,7 +11,7 @@ public class HorseRun {
 	public static void main(String[] args) {
 		
 		
-		
+		tierce();
 		
 
 	}
@@ -24,8 +25,10 @@ public class HorseRun {
 	
 	public static void tierce(){
 		
-		for(int i = 0; i < getHorses(); i++) {
-			
+		int[] winnerTierce = new Random().ints(1, getHorses()).distinct().limit(3).toArray();
+		
+		for(int i = 0; i < winnerTierce.length; i++) {
+			System.out.print(winnerTierce[i] + " - ");
 		}
 	}
 	
