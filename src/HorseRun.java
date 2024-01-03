@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,18 +15,36 @@ public class HorseRun {
 		String response = scan.nextLine();
 		
 		while(response.equalsIgnoreCase("Oui") || response.equalsIgnoreCase("o")) {
-			
+
 			System.out.println("Veuillez choisir le nombre de chevaux");
 			int horseNumber = validInput(scan, "Veuillez entrer entrer un nombre !!!");
-			tierce(horseNumber);
-			// quarte();
-			// quinte();
+			
+			if(horseNumber < minHorses  || horseNumber > maxHorses ) {
+				System.out.println("Veuillez entrer un nombre compris entre 12 et 20 !!");
+				
+			}else {
+				
+				System.out.println("Veuillez choisir le type de course hippique");
+				switch(runChoice()) {
+				case "tierce" : 
+					tierce(horseNumber);
+					break;
+				case "quarte" :
+					quarte(horseNumber);
+					break;
+				default :
+					quinte(horseNumber);
+				}
+			}
+			
+			
 			System.out.println("Voulez-vous continuer?");
 			scan.nextLine();
 			response = scan.nextLine();
 		}
 		
 		System.out.println("A bientôt");
+		
 	}
 
 	public static int validInput(Scanner scan, String errorMessage) {
@@ -38,12 +57,37 @@ public class HorseRun {
 				validInput = true;
 			} else {
 				System.out.println(errorMessage);
-				System.out.println("Veuillez choisir le nombre de chevaux");
 				scan.next();
 			}
 		}
 
 		return input;
+	}
+	
+	public static String runChoice() {
+		String choice = "";
+		HashMap<Integer, String> choiceList = new HashMap<Integer, String>();
+		choiceList.put(1, "tierce");
+		choiceList.put(2, "quarte");
+		choiceList.put(3, "quinte");
+		for(int i : choiceList.keySet()) {
+			System.out.print("[" + i + " - " + choiceList.get(i) + "]");
+		}
+		System.out.println();
+		
+		System.out.println("Quel type de course souhaitez-vous?(entrez un numéro)");
+		boolean ok = false;
+		
+		while(!ok) {
+			int userChoice = validInput(scan, "Veuillez entrer un numéro valide !!");
+			if(choiceList.containsKey(userChoice)) {
+				choice = choiceList.get(userChoice);
+				ok = true;
+			}else System.out.println("Veuillez entrer un numéro de la liste !");
+				
+		}
+		
+		return choice;
 	}
 
 	public static void tierce(int horse) {
