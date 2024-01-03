@@ -10,11 +10,22 @@ public class HorseRun {
 
 	public static void main(String[] args) {
 
-		System.out.println("Veuillez choisir le nombre de chevaux");
-		int horseNumber = validInput(scan, "Veuillez entrer entrer un nombre !!!");
-		tierce(horseNumber);
-		// quarte();
-		// quinte();
+		System.out.println("Souhaitez-vous simuler d'une course?");
+		String response = scan.nextLine();
+		
+		while(response.equalsIgnoreCase("Oui") || response.equalsIgnoreCase("o")) {
+			
+			System.out.println("Veuillez choisir le nombre de chevaux");
+			int horseNumber = validInput(scan, "Veuillez entrer entrer un nombre !!!");
+			tierce(horseNumber);
+			// quarte();
+			// quinte();
+			System.out.println("Voulez-vous continuer?");
+			scan.nextLine();
+			response = scan.nextLine();
+		}
+		
+		System.out.println("A bientôt");
 	}
 
 	public static int validInput(Scanner scan, String errorMessage) {
@@ -42,6 +53,7 @@ public class HorseRun {
 		for (int i = 0; i < winnerTierce.length; i++) {
 			System.out.print(winnerTierce[i] + " - ");
 		}
+		System.out.println();
 	}
 
 	public static void quarte(int horse) {
@@ -51,6 +63,7 @@ public class HorseRun {
 		for (int i = 0; i < winnerQuarte.length; i++) {
 			System.out.print(winnerQuarte[i] + " - ");
 		}
+		System.out.println();
 	}
 
 	public static void quinte(int horse) {
@@ -60,6 +73,7 @@ public class HorseRun {
 		for (int i = 0; i < winnerQuinte.length; i++) {
 			System.out.print(winnerQuinte[i] + " - ");
 		}
+		System.out.println();
 	}
 
 }
