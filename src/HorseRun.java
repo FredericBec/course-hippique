@@ -11,7 +11,7 @@ public class HorseRun {
 
 	public static void main(String[] args) {
 
-		System.out.println("Souhaitez-vous simuler d'une course?");
+		System.out.println("Souhaitez-vous simuler une course?");
 		String response = scan.nextLine();
 		
 		while(response.equalsIgnoreCase("Oui") || response.equalsIgnoreCase("o")) {
